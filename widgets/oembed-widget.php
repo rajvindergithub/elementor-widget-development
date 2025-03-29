@@ -166,6 +166,81 @@ class Elementor_oEmbed_Widget extends \Elementor\Widget_Base {
         
 
 		$this->end_controls_section();
+        
+        $this->start_controls_section(
+			'section_style',
+			[
+				'label' => esc_html__( 'Style', 'elementor-basic-widget' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+        
+        $this->add_control(
+            'heading_title', 
+            [
+                'label' => esc_html__( 'Heading Option', 'elementor-basic-widget' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+            ]
+        );
+        
+        
+        $this->add_control(
+			'color',
+			[
+				'label' => esc_html__( 'Heading Color', 'elementor-basic-widget' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#f00',
+				'selectors' => [
+					'{{WRAPPER}} .heading-block' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        
+        
+        
+         $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+                'label' => esc_html__( 'Heading Typography', 'elementor-basic-widget' ),
+				'name' => 'title_typography',
+				'selector' => '{{WRAPPER}} .heading-block',
+			]
+		);
+        
+         $this->add_control(
+            'description_title', 
+            [
+                'label' => esc_html__( 'Description Option', 'elementor-basic-widget' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+            ]
+        );
+        
+        
+        $this->add_control(
+			'description-color',
+			[
+				'label' => esc_html__( 'Description Color', 'elementor-basic-widget' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#f00',
+				'selectors' => [
+					'{{WRAPPER}} .description-block' => 'color: {{VALUE}}',
+				],
+			]
+		);
+        
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+                'label' => esc_html__( 'DescriptionTypography', 'elementor-basic-widget' ),
+				'name' => 'description_typography',
+				'selector' => '{{WRAPPER}} .description-block',
+			]
+		);
+
+		$this->end_controls_section();
+
+
 
 	}
 
